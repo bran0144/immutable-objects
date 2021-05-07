@@ -4,10 +4,8 @@ public class Demo {
     private boolean isHappyHour;
 
     private void reserve(Money cost) {
-        if (this.isHappyHour) {
-            cost.scale(.5);
-        }
-        System.out.println("Reserving an item costing " + cost);
+        Money finalCost = this.isHappyHour ? cost.scale(.5) : cost;
+        System.out.println("Reserving an item costing " + finalCost);
     }
     private void buy(Money wallet, Money cost){
         boolean enoughMoney = wallet.compareTo(cost) >= 0;

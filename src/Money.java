@@ -11,12 +11,13 @@ public class Money implements Comparable<Money>{
         this.currency = currency;
     }
 
-    public void scale(double factor) {
-        this.amount = this.amount.multiply(new BigDecimal(factor)).setScale(2, RoundingMode.HALF_UP);
+    public Money scale(double factor) {
+        return new Money(this.amount.multiply(new BigDecimal(factor)), this.currency);
     }
+
     @Override
     public int compareTo(Money other) {
-        return this.compareTo(this.currency.compareTo(other.currency), other);
+        return this.compareAmountTo(this.currency.compareTo(other.currency), other);
     }
     private int compareAmountTo(int currencyCompare, Money other) {
         return currencyCompare == 0 ? this.amount.compareTo(other.amount) : currencyCompare;
