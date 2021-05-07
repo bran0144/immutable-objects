@@ -3,18 +3,22 @@ import java.math.BigDecimal;
 public class Demo {
     private boolean isHappyHour;
 
-    private void reserve(Money cost) {
+    private Money reserve(Money cost) {
         Money finalCost = this.isHappyHour ? cost.scale(.5) : cost;
         System.out.println("Reserving an item costing " + finalCost);
+        return finalCost;
     }
     private void buy(Money wallet, Money cost){
         boolean enoughMoney = wallet.compareTo(cost) >= 0;
-        this.reserve(cost);
+        Money finalCost = this.reserve(cost);
+        boolean finalEnough = wallet.compareTo(finalCost) >= 0;
 
-        if (enoughMoney)
-            System.out.println("You will pay " + cost + " with your " + wallet);
+        if (finalEnough && !enoughMoney)
+            System.out.println("Only this time, you will pay " + finalCost + " with your " + wallet);
+        else if (finalEnough)
+            System.out.println("You will pay " + finalCost + " with your " + wallet);
         else
-            System.out.println("You cannot pay " + cost + " with your " + wallet);
+            System.out.println("You cannot pay " + finalCost + " with your " + wallet);
     }
 
     private void run(){
