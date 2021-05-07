@@ -51,5 +51,10 @@ public class Demo {
 
         Currency eur = new Currency("EUR");
         Money eur2 = new Money(new BigDecimal(2), eur);
+        Euro coin = new Euro(new BigDecimal(2), eur, "de");
+
+        System.out.println();
+        System.out.println(eur2 + " is " + (eur2.equals(coin) ? "" : "not ") + "equal to " + coin;
+        System.out.println(coin + " is " + (coin.equals(eur2) ? "" : "not ") + "equal to " + eur2;
     }
 }
