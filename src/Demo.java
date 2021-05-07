@@ -1,5 +1,12 @@
+import java.math.BigDecimal;
+
 public class Demo {
+    private boolean isHappyHour;
+
     private void reserve(Money cost) {
+        if (this.isHappyHour) {
+            cost.scale(.5);
+        }
         System.out.println("Reserving an item costing " + cost);
     }
     private void buy(Money wallet, Money cost){
@@ -13,6 +20,14 @@ public class Demo {
     }
 
     private void run(){
+        Currency usd = new Currency("USD");
+        Money usd12 = new Money(new BigDecimal(12), usd);
+        Money usd10 = new Money(new BigDecimal(10), usd);
+        Money usd7 = new Money(new BigDecimal(7), usd);
 
+        this.buy(usd12, usd10);
+
+        System.out.println();
+        this.buy(usd7, usd10);
     }
 }
