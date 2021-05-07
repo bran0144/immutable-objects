@@ -1,6 +1,8 @@
+package com.target.immutableobjects;
+
 import java.math.BigDecimal;
 
-public class Euro extends Money{
+public class Euro extends Money {
     private String iso2country;
 
     public Euro(BigDecimal amount, Currency currency, String iso2country) {
@@ -14,6 +16,11 @@ public class Euro extends Money{
     private boolean equals(Euro other) {
         return super.equals(other) && this.iso2country.equals(other.iso2country);
     }
+    @Override
+    public int hashCode() {
+        return super.hashCode() * 31 + this.iso2country.hashCode();
+    }
+
     @Override
     public String toString() {
         return super.toString() + " (" + this.iso2country + ")";

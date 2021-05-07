@@ -1,6 +1,7 @@
+package com.target.immutableobjects;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Currency;
 
 public class Money implements Comparable<Money>{
     private BigDecimal amount;
@@ -28,6 +29,11 @@ public class Money implements Comparable<Money>{
     private boolean equals(Money other) {
         return this.amount.equals(other.amount) && this.currency.equals(other.currency);
     }
+    @Override
+    public int hashCode(){
+        return this.amount.hashCode() * 17 + this.currency.hashCode();
+    }
+
     @Override
     public int compareTo(Money other) {
         return this.compareAmountTo(this.currency.compareTo(other.currency), other);
