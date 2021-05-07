@@ -48,5 +48,8 @@ public class Demo {
 
         Money usd5 = new Money(new BigDecimal(5), usd);
         System.out.println(sum2 + " is " + (sum2.equals(usd5) ? "" : "not ") + "equal to " + usd5);
+
+        Currency eur = new Currency("EUR");
+        Money eur2 = new Money(new BigDecimal(2), eur);
     }
 }

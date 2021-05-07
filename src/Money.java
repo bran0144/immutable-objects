@@ -23,7 +23,7 @@ public class Money implements Comparable<Money>{
 
     @Override
     public boolean equals(Object other) {
-        return other instanceof Money && this.equals((Money)other);
+        return other != null && other.getClass() == this.getClass() && this.equals((Money)other);
     }
     private boolean equals(Money other) {
         return this.amount.equals(other.amount) && this.currency.equals(other.currency);
