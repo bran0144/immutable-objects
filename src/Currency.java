@@ -3,6 +3,14 @@ import java.math.BigDecimal;
 public class Currency implements Comparable<Currency>{
     private String symbol;
 
+    @Override
+    public boolean equals(Object other) {
+        return other instanceof Currency && this.equals((Currency)other);
+    }
+    private boolean equals(Currency other) {
+        return this.symbol.equals(other.symbol);
+    }
+
     public Currency(String symbol) {
         this.symbol = symbol;
     }
